@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
 import { AxiosExemplo } from "./AxiosExemplo";
+import { UsuariosProvider } from "./Context";
 import { ContextoExemplo } from "./ContextoExemplo";
 import { Counter } from "./Counter";
 import { ReducerExample } from "./ReducerExample";
+
 import { TextField } from "./TextField";
 
 const App: React.FC = () => {
@@ -23,29 +25,31 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <TextField
-        person={person}
-        text="hello"
-        ok={true}
-        i={1}
-        fn={fn}
-        fn2={fn2}
-        fn3={fn3}
-        handleChange={(e) => {
-          console.log(e.currentTarget);
-        }}
-      />
-      <ReducerExample />
+      <UsuariosProvider>
+        <TextField
+          person={person}
+          text="hello"
+          ok={true}
+          i={1}
+          fn={fn}
+          fn2={fn2}
+          fn3={fn3}
+          handleChange={(e) => {
+            console.log(e.currentTarget);
+          }}
+        />
+        <ReducerExample />
 
-      <Counter>
-        {(count, setCount) => (
-          <div>
-            {count} <button onClick={() => setCount(count + 1)}>+</button>
-          </div>
-        )}
-      </Counter>
-      <AxiosExemplo />
-      <ContextoExemplo />
+        <Counter>
+          {(count, setCount) => (
+            <div>
+              {count} <button onClick={() => setCount(count + 1)}>+</button>
+            </div>
+          )}
+        </Counter>
+        <AxiosExemplo />
+        <ContextoExemplo />
+      </UsuariosProvider>
     </div>
   );
 };
