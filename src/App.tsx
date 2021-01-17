@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { AxiosExemplo } from "./AxiosExemplo";
+import { Counter } from "./Counter";
+import { ReducerExample } from "./ReducerExample";
+import { TextField } from "./TextField";
 
-function App() {
+const App: React.FC = () => {
+  function fn() {
+    console.log("Não retorno nada");
+  }
+
+  function fn2() {
+    return "Retorno Algo";
+  }
+
+  function fn3(bob: number) {
+    return "Meu Parametro tem que ser um numero e meu retorno uma string";
+  }
+
+  const person = { firstName: "Xerox", lastName: "To Xerox Xerox" };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TextField
+        person={person}
+        text="hello"
+        ok={true}
+        i={1}
+        fn={fn}
+        fn2={fn2}
+        fn3={fn3}
+        handleChange={(e) => {
+          console.log(e.currentTarget);
+        }}
+      />
+      <ReducerExample />
+      <Counter>
+        {(count, setCount) => (
+          <div>
+            {count} <button onClick={() => setCount(count + 1)}>+</button>
+          </div>
+        )}
+      </Counter>
+      <AxiosExemplo />
     </div>
   );
-}
+};
 
 export default App;
