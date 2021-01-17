@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { AxiosExemplo } from "./AxiosExemplo";
+import { ContextoExemplo } from "./ContextoExemplo";
 import { Counter } from "./Counter";
 import { ReducerExample } from "./ReducerExample";
 import { TextField } from "./TextField";
@@ -35,6 +36,7 @@ const App: React.FC = () => {
         }}
       />
       <ReducerExample />
+
       <Counter>
         {(count, setCount) => (
           <div>
@@ -43,6 +45,7 @@ const App: React.FC = () => {
         )}
       </Counter>
       <AxiosExemplo />
+      <ContextoExemplo />
     </div>
   );
 };
